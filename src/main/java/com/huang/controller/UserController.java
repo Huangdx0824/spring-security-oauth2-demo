@@ -17,6 +17,7 @@ public class UserController {
 
     @RequestMapping("/getCurrentUser")
     public Object getCurrentUser(Authentication authentication) {
+        System.out.println(authentication.getPrincipal());
         return authentication.getPrincipal();
     }
 }

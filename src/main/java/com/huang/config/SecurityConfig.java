@@ -26,14 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable() // 关闭csrf
+        http
+                .csrf()
+                .disable() // 关闭csrf
                 .authorizeRequests()
-                .antMatchers("/oauth/**", "/login/**", "/logout/**") // 放行
-                .permitAll() // permit认证
-                .anyRequest() // anyRequest认证
-                .authenticated()
+                .antMatchers("/oauth/**", "/login/**", "/logout/**").permitAll()
+                .anyRequest().authenticated()
                 .and() // 关联配置
-                .formLogin() // 允许表单登入访问
-                .permitAll();
+                .formLogin().permitAll();
     }
 }
