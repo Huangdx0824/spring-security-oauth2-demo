@@ -14,6 +14,7 @@ public class UserController {
      * @param authentication
      * @return
      */
+
     @RequestMapping("/getCurrentUser")
     public Object getCurrentUser(Authentication authentication) {
         return authentication.getPrincipal();

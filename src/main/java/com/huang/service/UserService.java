@@ -19,7 +19,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     public PasswordEncoder passwordEncoder; //密码加密
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String password = passwordEncoder.encode("123456");

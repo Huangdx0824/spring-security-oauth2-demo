@@ -1,8 +1,6 @@
 package com.huang.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -16,11 +14,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  */
 
 @Configuration
-@EnableAuthorizationServer
+@EnableAuthorizationServer //启用授权服务器配置
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthorizationServerConfig(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -28,7 +29,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // 配置client-id
                 .withClient("admin")
                 // 配置client-secret
-                .secret(passwordEncoder.encode("123321"))
+                .secret(passwordEncoder.encode("112233"))
                 //配置访问token的有效期
                 .accessTokenValiditySeconds(3600)
                 //配置redirect_uri,用于授权成功后跳转
