@@ -8,8 +8,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Security配置类
+ *
+ * @Author Brian
+ * @Date 2021-05-13
+ */
 @Configuration
-@EnableWebSecurity //启用Web安全
+@EnableWebSecurity // 启用Web安全
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -20,14 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable() //关闭csrf
+        http.csrf().disable() // 关闭csrf
                 .authorizeRequests()
-                .antMatchers("/oauth/**","/login/**","/logout/**") //放行
-                .permitAll() //permit认证
-                .anyRequest() //anyRequest认证
+                .antMatchers("/oauth/**", "/login/**", "/logout/**") // 放行
+                .permitAll() // permit认证
+                .anyRequest() // anyRequest认证
                 .authenticated()
-                .and()
-                .formLogin()
+                .and() // 关联配置
+                .formLogin() // 允许表单登入访问
                 .permitAll();
     }
 }

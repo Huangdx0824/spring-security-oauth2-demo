@@ -10,6 +10,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 /**
  * 授权服务器配置
+ *
+ * @Author Brian
+ * @Date 2021-05-13
  */
 
 @Configuration
