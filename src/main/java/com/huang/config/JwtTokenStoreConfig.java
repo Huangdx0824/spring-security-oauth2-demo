@@ -31,5 +31,10 @@ public class JwtTokenStoreConfig {
 
     }
 
+    @Bean
+    public JwtTokenEnhancer jwtTokenEnhancer() {
+        return new JwtTokenEnhancer();
+    }
+
 
 }
